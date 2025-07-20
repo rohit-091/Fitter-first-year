@@ -64,7 +64,7 @@ export default function App() {
         </select>
 
         <select
-          className="p-2 rounded-lg shadow bg-white text-lg font-bold"
+          className="p-2 rounded-lg shadow bg-yellow text-lg font-bold"
           value={chapter}
           onChange={(e) => {
             setChapter(e.target.value);
