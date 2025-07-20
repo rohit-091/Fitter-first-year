@@ -47,7 +47,7 @@ export default function App() {
       {/* Dropdowns */}
       <div className="flex flex-col items-center space-y-4 mb-4 z-10 relative">
         <select
-          className="p-2 rounded-lg shadow bg-white text-lg font-bold"
+          className="p-2 rounded-lg shadow bg-yellow text-lg font-bold"
           value={subject}
           onChange={(e) => {
             const subj = e.target.value;
