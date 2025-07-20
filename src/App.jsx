@@ -86,7 +86,7 @@ export default function App() {
           const isWrong = submitted && userAnswer !== q.answer;
 
           return (
-            <div key={index} className="p-4 rounded-xl shadow bg-yellow border">
+            <div key={index} className="p-4 rounded-xl shadow bg-blue border">
               <h2 className="text-xl font-bold mb-2">
                 {index + 1}. {q.question}
               </h2>
@@ -102,7 +102,7 @@ export default function App() {
 
               <div className="space-y-2">
                 {q.options.map((opt, i) => {
-                  let optionClass = "bg-pink-200 text-blue-700"; // default
+                  let optionClass = "bg-yellow-600 text-blue-700"; // default
                   if (submitted) {
                     if (i === q.answer) optionClass = "bg-green-600 text-white";
                     else if (i === userAnswer && i !== q.answer)
