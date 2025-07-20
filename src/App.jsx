@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 const chapters = {
@@ -81,7 +80,15 @@ export default function App() {
                       !submitted &&
                       setSelectedOption({ ...selectedOption, [index]: i })
                     }
-                    className={\`p-2 rounded-lg font-bold cursor-pointer border \${isCorrect ? "bg-green-600 text-white" : ""} \${isWrong ? "bg-red-600 text-white" : ""} \${!submitted && selectedOption[index] === i ? "bg-blue-100 border-blue-500" : "bg-gray-100 hover:bg-blue-200"}\`}
+                    className={`p-2 rounded-lg font-bold cursor-pointer border ${
+                      isCorrect
+                        ? "bg-green-600 text-white"
+                        : isWrong
+                        ? "bg-red-600 text-white"
+                        : !submitted && selectedOption[index] === i
+                        ? "bg-blue-100 border-blue-500"
+                        : "bg-gray-100 hover:bg-blue-200"
+                    }`}
                   >
                     {opt}
                   </div>
@@ -108,5 +115,4 @@ export default function App() {
       </footer>
     </div>
   );
-                }
-  
+}
