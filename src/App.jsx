@@ -33,10 +33,10 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-white-300 to-blue-4001 p-4 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-yellow-100 to-blue-200 p-4 overflow-hidden">
       
       {/* Watermark */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-80 text-7xl font-extrabold text-blue-800">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 text-7xl font-extrabold text-blue-800">
         ITI BANSI
       </div>
 
@@ -64,7 +64,7 @@ export default function App() {
         </select>
 
         <select
-          className="p-2 rounded-lg shadow bg-blue text-lg font-bold"
+          className="p-2 rounded-lg shadow bg-white text-lg font-bold"
           value={chapter}
           onChange={(e) => {
             setChapter(e.target.value);
@@ -86,12 +86,12 @@ export default function App() {
           const isWrong = submitted && userAnswer !== q.answer;
 
           return (
-            <div key={index} className="p-4 rounded-xl shadow bg-blue border">
+            <div key={index} className="p-4 rounded-xl shadow bg-white border">
               <h2 className="text-xl font-bold mb-2">
                 {index + 1}. {q.question}
               </h2>
 
-              {/* Show Image if exists */}
+              {/* Image if available */}
               {q.image && (
                 <img
                   src={q.image}
@@ -102,13 +102,13 @@ export default function App() {
 
               <div className="space-y-2">
                 {q.options.map((opt, i) => {
-                  let optionClass = "bg-yellow-300 text-blue-700"; // default
+                  let optionClass = "bg-pink-200 text-blue-700"; // default
                   if (submitted) {
                     if (i === q.answer) optionClass = "bg-green-600 text-white";
                     else if (i === userAnswer && i !== q.answer)
                       optionClass = "bg-red-600 text-white";
                   } else if (userAnswer === i) {
-                    optionClass += " border-blue-500 bg-blue-100";
+                    optionClass = "bg-purple-600 text-white";
                   }
 
                   return (
@@ -126,7 +126,7 @@ export default function App() {
                 })}
               </div>
 
-              {/* Feedback per question */}
+              {/* Per-question Feedback */}
               {submitted && (
                 <p className={`mt-2 font-bold ${isCorrect ? "text-green-600" : "text-red-600"}`}>
                   {isCorrect
