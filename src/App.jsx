@@ -36,7 +36,7 @@ export default function App() {
     <div className="relative min-h-screen bg-gradient-to-br from-yellow-800 to-blue-900 p-4 overflow-hidden">
       
       {/* Watermark */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 text-7xl font-extrabold text-blue-800">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-80 text-7xl font-extrabold text-blue-800">
         ITI BANSI
       </div>
 
@@ -64,7 +64,7 @@ export default function App() {
         </select>
 
         <select
-          className="p-2 rounded-lg shadow bg-yellow text-lg font-bold"
+          className="p-2 rounded-lg shadow bg-blue text-lg font-bold"
           value={chapter}
           onChange={(e) => {
             setChapter(e.target.value);
@@ -102,7 +102,7 @@ export default function App() {
 
               <div className="space-y-2">
                 {q.options.map((opt, i) => {
-                  let optionClass = "bg-yellow-600 text-blue-700"; // default
+                  let optionClass = "bg-yellow-300 text-blue-700"; // default
                   if (submitted) {
                     if (i === q.answer) optionClass = "bg-green-600 text-white";
                     else if (i === userAnswer && i !== q.answer)
