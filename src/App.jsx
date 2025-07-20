@@ -33,7 +33,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-yellow-800 to-blue-900 p-4 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-white-300 to-blue-4001 p-4 overflow-hidden">
       
       {/* Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-80 text-7xl font-extrabold text-blue-800">
