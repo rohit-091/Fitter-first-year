@@ -24,14 +24,18 @@ export default function App() {
   const unattemptedCount = totalQuestions - attemptedCount;
   const percentage = ((correctCount / totalQuestions) * 100).toFixed(2);
 
+  const wrongQuestions = questions
+    .map((q, i) => ({ ...q, userAnswer: selectedOption[i], index: i }))
+    .filter((q) => submitted && q.userAnswer !== q.answer);
+
   const handleSubmit = () => {
     setSubmitted(true);
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-yellow-300 to-blue-300 p-4 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-yellow-100 to-blue-200 p-4 overflow-hidden">
       
-      {/* Watermark Text */}
+      {/* Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 text-7xl font-extrabold text-blue-800">
         ITI BANSI
       </div>
@@ -43,7 +47,7 @@ export default function App() {
       {/* Dropdowns */}
       <div className="flex flex-col items-center space-y-4 mb-4 z-10 relative">
         <select
-          className="p-2 rounded-lg shadow bg-skyblue text-lg font-bold"
+          className="p-2 rounded-lg shadow bg-white text-lg font-bold"
           value={subject}
           onChange={(e) => {
             const subj = e.target.value;
@@ -60,7 +64,7 @@ export default function App() {
         </select>
 
         <select
-          className="p-2 rounded-lg shadow bg-yellow text-lg font-bold"
+          className="p-2 rounded-lg shadow bg-white text-lg font-bold"
           value={chapter}
           onChange={(e) => {
             setChapter(e.target.value);
@@ -86,17 +90,26 @@ export default function App() {
               <h2 className="text-xl font-bold mb-2">
                 {index + 1}. {q.question}
               </h2>
+
+              {/* Show Image if exists */}
+              {q.image && (
+                <img
+                  src={q.image}
+                  alt="question"
+                  className="w-64 h-auto mb-2 rounded border"
+                />
+              )}
+
               <div className="space-y-2">
                 {q.options.map((opt, i) => {
-                  const optionClass = submitted
-                    ? i === q.answer
-                      ? "bg-green-600 text-white"
-                      : i === userAnswer
-                      ? "bg-red-600 text-white"
-                      : "bg-gray-100"
-                    : userAnswer === i
-                    ? "bg-blue-100 border-blue-500"
-                    : "bg-gray-100 hover:bg-blue-200";
+                  let optionClass = "bg-pink-200 text-blue-700"; // default
+                  if (submitted) {
+                    if (i === q.answer) optionClass = "bg-green-600 text-white";
+                    else if (i === userAnswer && i !== q.answer)
+                      optionClass = "bg-red-600 text-white";
+                  } else if (userAnswer === i) {
+                    optionClass += " border-blue-500 bg-blue-100";
+                  }
 
                   return (
                     <div
@@ -113,7 +126,7 @@ export default function App() {
                 })}
               </div>
 
-              {/* Feedback */}
+              {/* Feedback per question */}
               {submitted && (
                 <p className={`mt-2 font-bold ${isCorrect ? "text-green-600" : "text-red-600"}`}>
                   {isCorrect
@@ -138,7 +151,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Final Summary */}
+      {/* Summary Feedback */}
       {submitted && (
         <div className="max-w-md mx-auto mt-10 bg-white p-6 rounded-xl shadow-lg border z-10 relative">
           <h2 className="text-2xl font-bold text-center text-blue-700 mb-4">
@@ -154,10 +167,28 @@ export default function App() {
         </div>
       )}
 
+      {/* Wrong Question List */}
+      {submitted && wrongQuestions.length > 0 && (
+        <div className="max-w-3xl mx-auto mt-10 bg-white p-6 rounded-xl shadow-lg border z-10 relative">
+          <h2 className="text-xl font-bold text-red-600 mb-4">
+            ❌ आपने जिन प्रश्नों के उत्तर गलत दिए:
+          </h2>
+          <ul className="space-y-4">
+            {wrongQuestions.map((q) => (
+              <li key={q.index}>
+                <p className="font-bold">{q.index + 1}. {q.question}</p>
+                <p>🔹 आपका उत्तर: <span className="text-red-600 font-bold">{q.options[q.userAnswer] || "कोई उत्तर नहीं"}</span></p>
+                <p>✅ सही उत्तर: <span className="text-green-600 font-bold">{q.options[q.answer]}</span></p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {/* Footer */}
       <footer className="text-center mt-10 text-red-600 font-bold text-lg z-10 relative">
         Developer By "RoHiiT Dw'n"
       </footer>
     </div>
   );
-    }
+}
