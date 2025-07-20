@@ -29,7 +29,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-yellow-100 to-blue-200 p-4 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-yellow-300 to-blue-300 p-4 overflow-hidden">
       
       {/* Watermark Text */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 text-7xl font-extrabold text-blue-800">
@@ -43,7 +43,7 @@ export default function App() {
       {/* Dropdowns */}
       <div className="flex flex-col items-center space-y-4 mb-4 z-10 relative">
         <select
-          className="p-2 rounded-lg shadow bg-white text-lg font-bold"
+          className="p-2 rounded-lg shadow bg-skyblue text-lg font-bold"
           value={subject}
           onChange={(e) => {
             const subj = e.target.value;
@@ -60,7 +60,7 @@ export default function App() {
         </select>
 
         <select
-          className="p-2 rounded-lg shadow bg-white text-lg font-bold"
+          className="p-2 rounded-lg shadow bg-yellow text-lg font-bold"
           value={chapter}
           onChange={(e) => {
             setChapter(e.target.value);
