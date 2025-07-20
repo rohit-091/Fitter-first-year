@@ -86,7 +86,7 @@ export default function App() {
           const isWrong = submitted && userAnswer !== q.answer;
 
           return (
-            <div key={index} className="p-4 rounded-xl shadow bg-white border">
+            <div key={index} className="p-4 rounded-xl shadow bg-yellow border">
               <h2 className="text-xl font-bold mb-2">
                 {index + 1}. {q.question}
               </h2>
