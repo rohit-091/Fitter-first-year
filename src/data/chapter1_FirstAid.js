@@ -29,6 +29,27 @@ const chapter1_FirstAid = [
     ],
     answer: 2, // लकड़ी की आग
   },
+   {
+    question: "6. फायर अलार्म बजते ही पता चलता है कि... (When fire alarm rings, it indicates...?)",
+    options: [
+      "खेल का मैदान (Playground)",
+      "स्कूल, अस्पताल से (From school or hospital)",
+      "कार्यालय (Office)",
+      "उपरोक्त कोई नहीं (None of the above)"
+    ],
+    answer: 1, // स्कूल, अस्पताल से
+  },
+  {
+    question: "7. चित्र में दर्शाया गया चिन्ह क्या है? (What does the symbol shown in the picture represent?)",
+    image: "goggles-symbol.png", // <-- Image file name
+    options: [
+      "आदेशात्मक (Mandatory)",
+      "निषेधात्मक (Prohibitory)",
+      "चेतावनी (Warning)",
+      "सूचनात्मक (Informative)"
+    ],
+    answer: 0, // आदेशात्मक
+  }
 ];
 
 export default chapter1_FirstAid;
